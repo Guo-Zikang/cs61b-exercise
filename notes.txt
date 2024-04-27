@@ -1,0 +1,3 @@
+The golden rule for static methods to know is that static methods can only modify static variables.
+
+Declaring a nested class as static means that methods inside the static class can not access any of the members of the enclosing class.
