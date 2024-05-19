@@ -1,0 +1,15 @@
+1. ListOfSets List<Set<Integer>>
+2. Array
+The indices of the array represent the elements of our set.
+The value at an index is the set number it belongs to.
+3. We assign each item the index of its parent. 
+If an item has no parent, then it is a 'root' and we assign it a negative value.
+4. Whenever we call connect, we always link the root of the smaller tree to the larger tree.
+5. We can connect all the items we visit to their root.
+总结：
+The naive implementation was maintaining a record of every single connection. Improvements
+made were:
+- Keeping track of sets rather than connections (QuickFind)
+- Tracking set membership by recording parent not set # (QuickUnion)
+- Union by Size (WeightedQuickUnion)
+- Path Compression (WeightedQuickUnionWithPathCompression)
