@@ -128,14 +128,9 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             return;
         }
         if (rightIndex(index) > size) {
-            if (contents[leftIndex(index)] != null) {
-                if (contents[leftIndex(index)].myPriority < contents[index].myPriority) {
-                    swap(leftIndex(index), index);
-                }
-                return;
+            if (contents[leftIndex(index)].myPriority < contents[index].myPriority) {
+                swap(leftIndex(index), index);
             }
-        }
-        if (contents[leftIndex(index)] == null && contents[rightIndex(index)] == null) {
             return;
         }
         int minIndex = min(leftIndex(index), rightIndex(index));
@@ -195,10 +190,10 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         swap(1, size);
         Node returnNode = contents[size];
         contents[size] = null;
+        size--;
         if (contents[1] != null) {
             sink(1);
         }
-        size--;
         return returnNode.item();
     }
 
