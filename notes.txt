@@ -3,3 +3,20 @@ The golden rule for static methods to know is that static methods can only modif
 Declaring a nested class as static means that methods inside the static class can not access any of the members of the enclosing class.
 
 When we override the equals() method, we have to also override the hashCode() method to ensure equal objects have the same hashCode.
+
+图的算法：
+图的邻接矩阵法和邻接表法
+图的遍历：DFS, BFS
+最短路径：Dijkstra, A*(增加估计的距离)
+最小生成树(MST)：Prim (与Dijkstra相似), Kruskal (将edge递增排序，依次访问)
+
+拓扑排序：DFS后序遍历结果的翻转
+找出有向无环图(DAG)中所有的最短路径(包含负边)：按照拓扑排序序列遍历所有顶点
+DAG中的最长路径：edge取负，找最短，再取负
+
+排序：
+选择排序
+堆排序
+归并排序
+插入排序（数组基本有序的情况下使用）
+快速排序

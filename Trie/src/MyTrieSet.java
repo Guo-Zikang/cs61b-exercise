@@ -33,19 +33,14 @@ public class MyTrieSet implements TrieSet61B {
             return false;
         }
         Node curr = root;
-        //char c = key.charAt(0);
-        //if (!curr.map.containsKey(c)) {
-        //    return false;
-        //}
-        //curr = curr.map.get(c);
         for (int i = 0; i < key.length(); i++) {
             char c = key.charAt(i);
             curr = curr.map.get(c);
-            if (curr == null || !curr.isKey) {
+            if (curr == null) {
                 return false;
             }
         }
-        return true;
+        return curr.isKey;
     }
 
     @Override
@@ -72,6 +67,7 @@ public class MyTrieSet implements TrieSet61B {
         return lst;
     }
 
+    /** 递归调用，发现字符串。 */
     private void colHelp(String s, List<String> lst, Node node) {
         if (node.isKey) {
             lst.add(s);
@@ -103,11 +99,29 @@ public class MyTrieSet implements TrieSet61B {
             return null;
         }
         List<String> lst = new ArrayList<>();
-
+        for (char ch : node.map.keySet()) {
+            colHelp(prefix + ch, lst, node.map.get(ch));
+        }
+        return lst;
     }
 
     @Override
     public String longestPrefixOf(String key) {
-
+        if (key == null || key.length() < 1) {
+            return null;
+        }
+        Node curr = root;
+        int maxLength = 0;
+        for (int i = 0; i < key.length(); i++) {
+            char c = key.charAt(i);
+            curr = curr.map.get(c);
+            if (curr == null) {
+                break;
+            }
+            if (curr.isKey) {
+                maxLength = i + 1;
+            }
+        }
+        return key.substring(0, maxLength);
     }
 }

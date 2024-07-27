@@ -54,6 +54,24 @@ public class TestMyTrieSet {
         }
     }
 
+    @Test
+    public void testLongestPrefixOf() {
+        MyTrieSet trie;
+        trie = new MyTrieSet();
+        trie.add("apple");
+        trie.add("app");
+        trie.add("apricot");
+        trie.add("banana");
+        trie.add("band");
+        assertEquals("app", trie.longestPrefixOf("applause"));
+        assertEquals("app", trie.longestPrefixOf("application"));
+        assertEquals("apricot", trie.longestPrefixOf("apricots"));
+        assertEquals("", trie.longestPrefixOf("ban"));
+        assertEquals("band", trie.longestPrefixOf("bandit"));
+        assertEquals("banana", trie.longestPrefixOf("banana"));
+        assertEquals("", trie.longestPrefixOf("cat"));
+    }
+
     public static void main(String[] args) {
         jh61b.junit.TestRunner.runTests(TestMyTrieSet.class);
     }
